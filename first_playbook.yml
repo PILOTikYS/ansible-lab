@@ -1,0 +1,16 @@
+---
+- name: Мой первый плейбук
+  hosts: targets
+  become: yes
+  tasks:
+    - name: Установить Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Запустить Nginx и добавить в автозагрузку
+      service:
+        name: nginx
+        state: started
+        enabled: yes
